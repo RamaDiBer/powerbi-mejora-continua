@@ -1,0 +1,5 @@
+expression RutaExcel = "C:\CarpetaProyectos\PowerBi Para Lousame\01. MEJORA_CONTINUA_2026 v2.xlsm" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 27833fd4-7964-411c-992b-02d71a86ed50
+
+	annotation PBI_ResultType = Text
+

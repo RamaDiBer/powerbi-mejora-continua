@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Mejora Continua 2026"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "51b65f21-cee9-4d98-979b-de9d611e1fe4"
+  }
+}

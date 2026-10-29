@@ -1,0 +1,227 @@
+table Mejoras
+	lineageTag: 5dd2c96e-ea96-4458-8cdc-7315b8fa92f8
+
+	measure 'Mejoras totales' = COUNTROWS ( Mejoras ) + 0
+		formatString: 0
+		lineageTag: a6c623de-dfe0-4534-bc57-6794772c9120
+
+	measure Implementadas = CALCULATE ( COUNTROWS ( Mejoras ), KEEPFILTERS ( Mejoras[Estado] = "IMPLEMENTADA" ) ) + 0
+		formatString: 0
+		lineageTag: 5edef461-77e1-422a-8492-bc9ef70acc27
+
+	measure 'En proceso' = CALCULATE ( COUNTROWS ( Mejoras ), KEEPFILTERS ( Mejoras[Estado] = "EN PROCESO" ) ) + 0
+		formatString: 0
+		lineageTag: 374cc0d7-fcc5-4356-9514-14f5aea8a1a2
+
+	measure 'No iniciadas' = CALCULATE ( COUNTROWS ( Mejoras ), KEEPFILTERS ( Mejoras[Estado] = "NO INICIADO" ) ) + 0
+		formatString: 0
+		lineageTag: 93226a32-02aa-45ff-b800-293d0afd724c
+
+	measure '% Implementadas' = DIVIDE ( [Implementadas], [Mejoras totales] )
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 1ac2fa13-e31d-4e34-87a9-06994fac2c16
+
+	measure '% En proceso' = DIVIDE ( [En proceso], [Mejoras totales] )
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: a0001107-a353-4c2c-bcd7-a29b824f4967
+
+	measure '% No iniciadas' = DIVIDE ( [No iniciadas], [Mejoras totales] )
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: c4ec621e-b956-4607-beef-a38f66ed8a33
+
+	measure 'Con impacto economico' = CALCULATE ( COUNTROWS ( Mejoras ), KEEPFILTERS ( Mejoras[Impacto economico] = "SI" ) ) + 0
+		formatString: 0
+		lineageTag: 3863e6f8-f1e6-41b2-a67d-c8740f4e96a9
+
+	measure 'Texto % Implementadas' = FORMAT ( [% Implementadas], "0.0%" ) & " del total"
+		displayFolder: Tarjetas
+		lineageTag: e0d20ad6-1112-4b2b-9b90-b068fe9fecc1
+
+	measure 'Texto % En proceso' = FORMAT ( [% En proceso], "0.0%" ) & " del total"
+		displayFolder: Tarjetas
+		lineageTag: 5a450771-6d1f-48f7-b71d-57b02fdb513f
+
+	measure 'Texto % No iniciadas' = FORMAT ( [% No iniciadas], "0.0%" ) & " del total"
+		displayFolder: Tarjetas
+		lineageTag: 1b3c156d-bb45-4253-96e5-02e9cab178a9
+
+	measure 'Texto impacto economico' = [Con impacto economico] & " con impacto económico"
+		displayFolder: Tarjetas
+		lineageTag: f6be4f91-1b45-46a3-a4ee-940280456c1d
+
+	measure 'Color Estado' = SWITCH ( SELECTEDVALUE ( Mejoras[Estado] ), "IMPLEMENTADA", "#1F9D63", "EN PROCESO", "#E8A317", "NO INICIADO", "#D4533B", "#8A97A3" )
+		displayFolder: Formato
+		lineageTag: 654d3bf7-4ef2-4cbc-be5d-748e3429ff81
+
+	column Nro
+		dataType: int64
+		formatString: 0
+		lineageTag: 007d8315-1e77-43e0-ae79-686fd7f17134
+		summarizeBy: none
+		sourceColumn: Nro
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mejora
+		dataType: string
+		lineageTag: 3b57aeb3-ca39-4f89-8b1d-437b42d2a51f
+		summarizeBy: none
+		sourceColumn: Mejora
+
+		annotation SummarizationSetBy = Automatic
+
+	column Accion
+		dataType: string
+		lineageTag: 5e07b1b2-4b35-42b3-8f4b-dc474e22e9ed
+		summarizeBy: none
+		sourceColumn: Accion
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fecha implementacion'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 0ca5a8d7-d05f-4e60-99b3-b93d613196bd
+		summarizeBy: none
+		sourceColumn: Fecha implementacion
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sitio
+		dataType: string
+		lineageTag: 92e2fe6a-c5b6-4891-a7a1-a00dcf1fcaeb
+		summarizeBy: none
+		sourceColumn: Sitio
+
+		annotation SummarizationSetBy = Automatic
+
+	column Unidad
+		dataType: string
+		lineageTag: 51a27f5b-42e9-4579-a3fa-e7b8741165c9
+		summarizeBy: none
+		sourceColumn: Unidad
+
+		annotation SummarizationSetBy = Automatic
+
+	column Puesto
+		dataType: string
+		lineageTag: f08a839a-3077-4182-9e50-8e29f1c18e58
+		summarizeBy: none
+		sourceColumn: Puesto
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Status IDOC'
+		dataType: string
+		lineageTag: 321209e0-379a-43fb-96db-a8543c04c40e
+		summarizeBy: none
+		sourceColumn: Status IDOC
+
+		annotation SummarizationSetBy = Automatic
+
+	column Estado
+		dataType: string
+		lineageTag: 80848e9c-027a-4820-8fb3-22cb36ddbf2e
+		summarizeBy: none
+		sourceColumn: Estado
+
+		annotation SummarizationSetBy = Automatic
+
+	column Responsable
+		dataType: string
+		lineageTag: 5fc3c1b8-e117-4ec7-b8af-664e95a65b58
+		summarizeBy: none
+		sourceColumn: Responsable
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Impacto economico'
+		dataType: string
+		lineageTag: 49ca7799-cca1-4017-9c76-962bc1036735
+		summarizeBy: none
+		sourceColumn: Impacto economico
+
+		annotation SummarizationSetBy = Automatic
+
+	column MesNum
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 54b84743-5b6f-477a-befd-0afad7ff892d
+		summarizeBy: none
+		sourceColumn: MesNum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mes
+		dataType: string
+		lineageTag: ae781440-576c-42e1-a9dd-aa90c7feffdf
+		summarizeBy: none
+		sourceColumn: Mes
+		sortByColumn: MesNum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Mejoras = m
+		mode: import
+		source =
+				let
+				    // 1) Archivo Excel (la ruta sale del parámetro RutaExcel)
+				    Origen = Excel.Workbook(File.Contents(RutaExcel), null, true),
+				
+				    // 2) Hoja BASE: la fila 1 es el título, los encabezados están en la fila 2
+				    Hoja = Origen{[Item = "BASE", Kind = "Sheet"]}[Data],
+				    SinTitulo = Table.Skip(Hoja, 1),
+				    Encabezados = Table.PromoteHeaders(SinTitulo, [PromoteAllScalars = true]),
+				
+				    // 3) Limpiar espacios y saltos de línea en los nombres de columna
+				    //    ("EQUIPO ", "RESPONSABLE<salto>CARGA IDOC", "IMPACTO <salto>ECONÓMICO")
+				    Limpias = Table.TransformColumnNames(Encabezados, each
+				        Text.Combine(List.Select(Text.SplitAny(Text.From(_), " #(lf)#(cr)#(tab)"), each _ <> ""), " ")),
+				
+				    // 4) Quedarse solo con las columnas útiles
+				    Columnas = Table.SelectColumns(Limpias, {
+				        "N°", "DESCRIPCIÓN DE MEJORAS", "ACCIÓN", "IMPLEMENTADO", "SITIO", "UNIDAD",
+				        "PUESTO", "STATUS IDOC", "RESPONSABLE CARGA IDOC", "STATUS", "IMPACTO ECONÓMICO"}, MissingField.UseNull),
+				
+				    // 5) Sacar las filas vacías (la tabla tiene filas de relleno)
+				    SoloConDatos = Table.SelectRows(Columnas, each
+				        [#"DESCRIPCIÓN DE MEJORAS"] <> null and Text.Trim(Text.From([#"DESCRIPCIÓN DE MEJORAS"])) <> ""),
+				
+				    // 6) Fecha de implementación: puede venir como fecha, número o texto (dd/MM/yy o dd/MM/yyyy)
+				    Fechas = Table.TransformColumns(SoloConDatos, {{"IMPLEMENTADO", each
+				        if _ = null then null
+				        else if Value.Is(_, type datetime) or Value.Is(_, type date) or Value.Is(_, type number) then Date.From(_)
+				        else try Date.FromText(Text.Trim(Text.From(_)), [Format = "dd/MM/yy", Culture = "es-AR"])
+				        otherwise try Date.FromText(Text.Trim(Text.From(_)), [Format = "dd/MM/yyyy", Culture = "es-AR"])
+				        otherwise null, type nullable date}}),
+				
+				    // 7) Columnas normalizadas
+				    Texto = (v, vacio) => let t = Text.Trim(Text.From(v ?? "")) in if t = "" then vacio else t,
+				    Nro = Table.AddColumn(Fechas, "Nro", each try Int64.From([#"N°"]) otherwise null, Int64.Type),
+				    Estado = Table.AddColumn(Nro, "Estado", each Text.Upper(Texto([STATUS], "SIN ESTADO")), type text),
+				    StatusIdoc = Table.AddColumn(Estado, "Status IDOC", each Text.Upper(Texto([STATUS IDOC], "SIN ESTADO")), type text),
+				    Responsable = Table.AddColumn(StatusIdoc, "Responsable", each Texto([RESPONSABLE CARGA IDOC], "Sin asignar"), type text),
+				    Impacto = Table.AddColumn(Responsable, "Impacto economico", each Text.Upper(Texto([IMPACTO ECONÓMICO], "SIN DATO")), type text),
+				    Unidad = Table.AddColumn(Impacto, "Unidad", each Texto([UNIDAD], "Sin unidad"), type text),
+				    Sitio = Table.AddColumn(Unidad, "Sitio", each Texto([SITIO], "Sin sitio"), type text),
+				    Puesto = Table.AddColumn(Sitio, "Puesto", each Texto([PUESTO], "Sin puesto"), type text),
+				    Mejora = Table.AddColumn(Puesto, "Mejora", each Text.Trim(Text.From([#"DESCRIPCIÓN DE MEJORAS"])), type text),
+				    Accion = Table.AddColumn(Mejora, "Accion", each Texto([ACCIÓN], ""), type text),
+				    MesNum = Table.AddColumn(Accion, "MesNum", each
+				        if [IMPLEMENTADO] = null then 13 else Date.Month([IMPLEMENTADO]), Int64.Type),
+				    Mes = Table.AddColumn(MesNum, "Mes", each
+				        if [MesNum] = 13 then "Sin fecha"
+				        else {"ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"}{[MesNum] - 1}, type text),
+				    ConFecha = Table.RenameColumns(Mes, {{"IMPLEMENTADO", "Fecha implementacion"}}),
+				
+				    Final = Table.SelectColumns(ConFecha, {
+				        "Nro", "Mejora", "Accion", "Fecha implementacion", "Sitio", "Unidad", "Puesto",
+				        "Status IDOC", "Estado", "Responsable", "Impacto economico", "MesNum", "Mes"})
+				in
+				    Final
+
+	annotation PBI_ResultType = Table
+

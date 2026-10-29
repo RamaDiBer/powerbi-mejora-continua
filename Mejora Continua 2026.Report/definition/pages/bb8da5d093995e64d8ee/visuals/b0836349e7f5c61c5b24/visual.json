@@ -1,0 +1,45 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "b0836349e7f5c61c5b24",
+  "position": {
+    "x": 20,
+    "y": 12,
+    "z": 2000,
+    "height": 48,
+    "width": 900,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Mejora Continua 2026",
+                    "textStyle": {
+                      "fontSize": "20pt",
+                      "fontWeight": "bold",
+                      "color": "#10253A"
+                    }
+                  },
+                  {
+                    "value": "  ·  Seguimiento de mejoras",
+                    "textStyle": {
+                      "fontSize": "14pt",
+                      "color": "#5B6B7A"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
